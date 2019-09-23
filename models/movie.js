@@ -5,8 +5,7 @@ const movieSchema = new mongoose.Schema({
   title: String,
   overview: String,
   img: String,
-  genres: String,
-  symbol: String,
+  genres: Array,
   popularity: Number,
   vote_average: Number,
   release_date: String
