@@ -23,15 +23,14 @@ router.get('/:id', function(req, res, next) {
 
 router.put('/:id', function(req, res, next) {
   console.log("I received a GET request");
-  console.log(req.body);
 
   let addToQueue = req.body
 
   User.findOneAndUpdate({id: req.params.id}, addToQueue)
     .exec(function(err, product){
-        if(err) return res.status(500).json({err: err.message})
-        res.json({product, message: 'Successfully updated'})
-      });
+      if(err) return res.status(500).json({err: err.message})
+      res.json({product, message: 'Successfully updated'})
+    });
 });
 
 module.exports = router;
