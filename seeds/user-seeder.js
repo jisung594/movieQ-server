@@ -10,7 +10,8 @@ let usersData = [
     id: 1,
     first_name: "Jonathan",
     last_name: "Choi",
-    username: "jisung594"
+    username: "jisung594",
+    queue: []
   }
 ]
 
@@ -19,7 +20,8 @@ let users = usersData.map(userObj => {
     id: userObj["id"],
     first_name: userObj["first_name"],
     last_name: userObj["last_name"],
-    username: userObj["username"]
+    username: userObj["username"],
+    queue: userObj["queue"]
   })
 })
 
