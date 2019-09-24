@@ -12,7 +12,8 @@ var app = express();
 
 // *****
 var mongoose = require('mongoose')
-var router = express.Router();
+var bodyParser = require('body-parser')
+var router = express.Router()
 // *****
 // --------------------------------------------
 
@@ -22,6 +23,9 @@ mongoose.connect('mongodb://localhost:27017/movieDatabase')
 let db = mongoose.connection
 // *****
 
+// *****
+app.use(bodyParser.json())
+// *****
 
 
 // view engine setup --------------------------
