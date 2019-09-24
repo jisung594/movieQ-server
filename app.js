@@ -10,8 +10,17 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// *****
 var mongoose = require('mongoose')
+var router = express.Router();
+// *****
 // --------------------------------------------
+
+
+// *****
+mongoose.connect('mongodb://localhost:27017/movieDatabase')
+let db = mongoose.connection
+// *****
 
 
 
@@ -26,8 +35,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,7 +53,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-// --------------------------------------------
+// ____________________________________________
+
+
+
+// *****
+app.use('/api/movies', require('./routes/api/movies'));
+app.use('/users', usersRouter);
+// *****
 
 
 // PORT
@@ -52,4 +68,5 @@ const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`Listening on port ${port}`))
 
 
+// ____________________________________________
 module.exports = app;
