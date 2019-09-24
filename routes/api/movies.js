@@ -7,7 +7,7 @@ router.get('/', (req,res,error) => {
 
   Movie.find()
     .then(data => res.send(data))
-    .catch(console.log(error))
+    .catch(err => console.log(err))
 })
 
 module.exports = router;
